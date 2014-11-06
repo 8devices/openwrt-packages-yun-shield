@@ -7,31 +7,31 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NPM_NAME:=socket.io-client
+PKG_NPM_NAME:=sqlite3
 PKG_NAME:=node-$(PKG_NPM_NAME)
-PKG_VERSION:=1.1.0
-PKG_RELEASE:=2
+PKG_VERSION:=3.0.2
+PKG_RELEASE:=1
 
 PKG_SOURCE:=$(PKG_NPM_NAME)-$(PKG_VERSION).tgz
 PKG_SOURCE_URL:=http://registry.npmjs.org/$(PKG_NPM_NAME)/-/
-PKG_MD5SUM:=5111a017f1838ebed59d3aa0f0b03f90
+PKG_MD5SUM:=0fbb75d666062b1e602465cfc4020284
 
 PKG_BUILD_DEPENDS:=node
 PKG_NODE_VERSION:=0.10.33
 
 include $(INCLUDE_DIR)/package.mk
 
-define Package/node-socket.io-client
-  DEPENDS:=+node +node-ws
+define Package/node-sqlite3
+  DEPENDS:=+node
   SUBMENU:=Node.js
   SECTION:=lang
   CATEGORY:=Languages
-  TITLE:=Socket.IO client for the browser and node.js
-  URL:=https://www.npmjs.org/package/socket.io-client
+  TITLE:=Asynchronous, non-blocking SQLite3 bindings
+  URL:=https://www.npmjs.org/package/sqlite3
 endef
 
-define Package/node-socket.io-client/description
- Socket.IO client for the browser and node.js
+define Package/node-sqlite3/description
+ Node.js package to access serial ports for reading and writing OR Welcome your robotic JavaScript overlords. Better yet, program them!
 endef
 
 define Build/Prepare
@@ -55,11 +55,10 @@ define Build/Compile
 	npm install -g $(PKG_BUILD_DIR)
 endef
 
-define Package/node-socket.io-client/install
+define Package/node-sqlite3/install
 	mkdir -p $(1)/usr/lib/
 	$(CP) $(PKG_INSTALL_DIR)/usr/lib/node_modules $(1)/usr/lib/
-	rm -rf $(1)/usr/lib/node_modules/$(PKG_NPM_NAME)/node_modules/ws
 endef
 
-$(eval $(call BuildPackage,node-socket.io-client))
+$(eval $(call BuildPackage,node-sqlite3))
 
