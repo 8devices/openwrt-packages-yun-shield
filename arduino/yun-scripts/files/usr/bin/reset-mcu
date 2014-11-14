@@ -1,8 +1,10 @@
 #!/bin/sh
 
-echo 12 > /sys/class/gpio/export
+source /usr/bin/get-gpio-conf
+
+echo $GPIO_MCU_RESET > /sys/class/gpio/export
 echo "high" > /sys/class/gpio/gpio12/direction
 echo 1 > /sys/class/gpio/gpio12/value
 echo 0 > /sys/class/gpio/gpio12/value
-echo 12 > /sys/class/gpio/unexport
+echo $GPIO_MCU_RESET > /sys/class/gpio/unexport
 
