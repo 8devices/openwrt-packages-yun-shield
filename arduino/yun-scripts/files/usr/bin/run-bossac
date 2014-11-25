@@ -1,5 +1,27 @@
 #!/bin/sh
 
+. /usr/bin/get-gpio-conf
+
+#bring Arduino pin 7 low
+echo $GPIO_HANDSHAKE > /sys/class/gpio/export
+echo "high" > /sys/class/gpio/gpio$GPIO_HANDSHAKE/direction
+echo 0 > /sys/class/gpio/gpio$GPIO_HANDSHAKE/value
+
+#enable level converter for Arduino pin 7
+echo 1 > /sys/class/gpio/gpio$GPIO_HANDSHAKE_OE/value
+
+#reset microcontroller
+/usr/bin/reset-mcu
+
+sleep 2
+
+#disable level converter for Arduino pin 7
+echo 0 > /sys/class/gpio/gpio$GPIO_HANDSHAKE_OE/value
+
+#bring pin 7 high
+echo 1 > /sys/class/gpio/gpio$GPIO_HANDSHAKE/value
+echo $GPIO_HANDSHAKE > /sys/class/gpio/unexport
+
 init_pids=$(pgrep init)
 shell_pids=$(pgrep ash)
 

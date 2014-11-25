@@ -10,6 +10,7 @@ nuy)
 	GPIO_SPI_OE=22
 	GPIO_HANDSHAKE_OE=16
 	GPIO_UART_OE=17
+	GPIO_HANDSHAKE=18
 	AVRDUDE_CONF="/etc/avrdude_nuy.conf"
 	;;
 yun)
@@ -17,6 +18,7 @@ yun)
 	GPIO_SPI_OE=21
 	GPIO_HANDSHAKE_OE=22
 	GPIO_UART_OE=23
+	GPIO_HANDSHAKE=19
 	AVRDUDE_CONF="/etc/avrdude_yun.conf"
 	;;
 esac
