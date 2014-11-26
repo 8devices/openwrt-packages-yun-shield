@@ -3,12 +3,17 @@
 . /usr/bin/get-gpio-conf
 
 HEX=$1
-VERBOSE=$2
 
 OPTIND=3
-while getopts ":p:l:h:e:" optname
+while getopts ":qvp:l:h:e:" optname
 do
 	case "$optname" in
+	"q")
+		VERBOSE="-q -q"
+	;;
+	"v")
+		VERBOSE="-v"
+	;;
 	"p")
 		MCU=$OPTARG
 	;;

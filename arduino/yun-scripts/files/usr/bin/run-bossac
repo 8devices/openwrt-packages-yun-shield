@@ -36,6 +36,6 @@ for pid in $init_pids $shell_pids; do
 	fi
 done
 
-bossac $@
+/usr/bin/bossac $@
 
 rm /tmp/block_init_askfirst
