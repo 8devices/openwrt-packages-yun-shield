@@ -9,7 +9,7 @@ start() {
 	. /lib/ar71xx.sh 
 	case $(ar71xx_board_name) in
 	nuy)
-		sed -i 's/board=yun/board=nuy/g' /etc/avahi/services/arduino.service
+		sed -i 's/board=yun/board=8devices NUY/g' /etc/avahi/services/arduino.service
 		;;
 	esac
 }
