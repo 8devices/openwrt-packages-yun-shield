@@ -10,10 +10,13 @@ echo 0 > /sys/class/gpio/gpio$GPIO_HANDSHAKE/value
 #enable level converter for Arduino pin 7
 echo 1 > /sys/class/gpio/gpio$GPIO_HANDSHAKE_OE/value
 
+#keep pin low 2 seconds to be detected by Due
+sleep 2
+
 #reset microcontroller
 /usr/bin/reset-mcu
 
-sleep 2
+sleep 1
 
 #disable level converter for Arduino pin 7
 echo 0 > /sys/class/gpio/gpio$GPIO_HANDSHAKE_OE/value
