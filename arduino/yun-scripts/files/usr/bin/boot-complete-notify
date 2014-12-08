@@ -1,3 +1,5 @@
 #!/bin/sh
 
-echo "default-on" > /sys/class/leds/ds:green:usb/trigger
+. /usr/bin/get-gpio-conf
+
+echo "default-on" > /sys/class/leds/$LED_BOOT_DONE/trigger
