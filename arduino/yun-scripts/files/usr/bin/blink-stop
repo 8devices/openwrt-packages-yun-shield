@@ -2,5 +2,10 @@
 
 . /usr/bin/get-gpio-conf
 
-echo "none" > /sys/class/leds/$LED_RESET_BLINK/trigger
+LED=$LED_USER
+if [ "$1" = "system" ]
+then
+	LED=$LED_RESET_BLINK
+fi
 
+echo "none" > /sys/class/leds/$LED/trigger

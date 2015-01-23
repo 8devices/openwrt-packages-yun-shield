@@ -2,7 +2,7 @@
 
 PATH=$PATH:/bin:/sbin:/usr/bin
 
-blink-start 100
+blink-start 100 system
 
 . /sbin/firstboot
 

@@ -2,7 +2,12 @@
 
 . /usr/bin/get-gpio-conf
 
-echo "timer" > /sys/class/leds/$LED_RESET_BLINK/trigger
-echo $1 > /sys/class/leds/$LED_RESET_BLINK/delay_on
-echo $1 > /sys/class/leds/$LED_RESET_BLINK/delay_off
+LED=$LED_USER
+if [ "$2" = "system" ]
+then
+	LED=$LED_RESET_BLINK
+fi
 
+echo "timer" > /sys/class/leds/$LED/trigger
+echo $1 > /sys/class/leds/$LED/delay_on
+echo $1 > /sys/class/leds/$LED/delay_off

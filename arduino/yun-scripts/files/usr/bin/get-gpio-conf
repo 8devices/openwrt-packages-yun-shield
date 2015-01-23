@@ -12,8 +12,9 @@ nuy)
 	GPIO_UART_OE=17
 	GPIO_HANDSHAKE=18
 	AVRDUDE_CONF="/etc/avrdude_nuy.conf"
-	LED_BOOT_DONE="nuy:white:ready"
-	LED_RESET_BLINK="nuy:white:ready"
+	LED_BOOT_DONE="nuy:white:system"
+	LED_RESET_BLINK="nuy:white:system"
+	LED_USER="nuy:red:user"
 	;;
 yun)
 	GPIO_MCU_RESET=18
@@ -24,5 +25,6 @@ yun)
 	AVRDUDE_CONF="/etc/avrdude_yun.conf"
 	LED_BOOT_DONE="ds:green:usb"
 	LED_RESET_BLINK="ds:green:wlan"
+	LED_USER="ds:green:wlan"
 	;;
 esac
