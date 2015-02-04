@@ -1,5 +1,3 @@
 #!/bin/sh
 
-. /usr/bin/get-gpio-conf
-
-echo "default-on" > /sys/class/leds/$LED_BOOT_DONE/trigger
+blink-start 200 system
