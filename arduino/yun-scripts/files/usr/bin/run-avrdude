@@ -67,5 +67,8 @@ then
 fi
 
 avrdude -c linuxgpio -C $AVRDUDE_CONF -p $MCU -U lfuse:w:$FUSES_LOW:m -U hfuse:w:$FUSES_HIGH:m -U efuse:w:$FUSES_EXT:m -Uflash:w:$HEX:i $VERBOSE
+avrdude_return=$?
 
 echo 0 > /sys/class/gpio/gpio$GPIO_SPI_OE/value
+
+exit $avrdude_return

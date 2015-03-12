@@ -44,5 +44,8 @@ for pid in $init_pids $shell_pids; do
 done
 
 /usr/bin/bossac $@
+bossac_return=$?
 
 rm /tmp/block_init_askfirst
+
+exit $bossac_return
