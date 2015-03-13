@@ -9,7 +9,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=uSDaemon
 PKG_VERSION:=1.0.0
-PKG_RELEASE:=1
+PKG_RELEASE:=2
 
 include $(INCLUDE_DIR)/package.mk
 
@@ -31,7 +31,6 @@ define Package/uSDaemon/install
 
 	$(INSTALL_BIN) ./files/sbin/uSDaemon $(1)/sbin/
 	$(INSTALL_BIN) ./files/etc/init.d/usd $(1)/etc/init.d
-	$(INSTALL_DATA) ./files/lib/functions/post_mount.sh $(1)/lib/functions
 endef
 
 $(eval $(call BuildPackage,uSDaemon))
