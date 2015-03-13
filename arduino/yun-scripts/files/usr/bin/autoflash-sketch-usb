@@ -9,13 +9,13 @@ g_sketch_folder="arduino_update"
 g_mount_folder="/mnt"
 
 g_arduino_names="
-arduino_avr_uno
-arduino_avr_leonardo
-arduino_avr_mega
-arduino_avr_diecimila
-arduino_sam_due
-arduino_sam_zero
-arduino_avr_yun
+arduino_avr_uno*.hex
+arduino_avr_leonardo*.hex
+arduino_avr_mega*.hex
+arduino_avr_diecimila*.hex
+arduino_sam_due*.bin
+arduino_sam_zero*.bin
+arduino_avr_yun*.hex
 "
 
 UCI="/sbin/uci"
@@ -47,9 +47,8 @@ find_sketch()
 		if [ -d $fol/$g_sketch_folder ]
 		then
 			# try matching all arduino board names in target folder
-			for arduino_name in $g_arduino_names
+			for arduino_pattern in $g_arduino_names
 			do
-				local arduino_pattern="$arduino_name*.hex"
 				local match_count=`find $fol/$g_sketch_folder -iname "$arduino_pattern" | wc -l`
 				if [ $match_count -eq 1 ]
 				then
@@ -136,13 +135,13 @@ flash_arduino()
 		return $?
 	;;
 
-	"arduino_sam_due*.hex")
+	"arduino_sam_due*.bin")
 		echo "Flash Arduino Due"
 		run-bossac -i -d --port=ttyATH0 -U false -e -w -v -b "$g_sketch" -R
 		return $?
 	;;
 	
-	"arduino_sam_zero*.hex")
+	"arduino_sam_zero*.bin")
 		echo "Flash Arduino Zero"
 		run-bossac -i -d --port=ttyATH0 -U false -e -w -v "$g_sketch" -R
 		return $?
