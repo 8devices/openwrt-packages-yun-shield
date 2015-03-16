@@ -77,7 +77,13 @@ find_sketch()
 
 get_mac()
 {
-	g_MAC=`cat /sys/class/net/wlan0/address| sed s/://g | awk '{print toupper($0)}'`
+	mtd_part=`grep "\"art\"" /proc/mtd | awk '{FS=":"; print $1}'`
+	if [ "x$mtd_part" == "x" ]
+	then
+		g_MAC="NO_MAC"
+	else
+		g_MAC=`dd if=/dev/$mtd_part bs=1 skip=4098 count=6 2> /dev/null | hexdump -v -e '1/1 "%02X"'`
+	fi
 }
 
 check_tag()
