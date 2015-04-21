@@ -12,9 +12,9 @@ nuy)
 	GPIO_UART_OE=17
 	GPIO_HANDSHAKE=18
 	AVRDUDE_CONF="/etc/avrdude_nuy.conf"
-	LED_BOOT_DONE="nuy:white:system"
-	LED_RESET_BLINK="nuy:white:system"
-	LED_USER="nuy:red:user"
+	LED_BOOT_DONE="yun-shield:white:system"
+	LED_RESET_BLINK="yun-shield:white:system"
+	LED_USER="yun-shield:red:user"
 	;;
 yun)
 	GPIO_MCU_RESET=18
