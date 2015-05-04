@@ -14,9 +14,9 @@ echo 1 > /sys/class/gpio/gpio$GPIO_HANDSHAKE_OE/value
 
 #reset microcontroller to enter progamming mode
 /usr/bin/reset-mcu
-sleep 1
 
-#we do reset 2 times because Due needs it
+
+#we do reset 2 times because Due needs it and Zero implements double-tap boot loader mode
 /usr/bin/reset-mcu
 sleep 1
 
