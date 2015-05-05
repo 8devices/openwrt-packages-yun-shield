@@ -112,6 +112,7 @@ write_tag()
 
 	get_mac
 	echo $log >> $g_selected_sketch_folder/"$g_MAC"_"$status_str"
+	sync
 }
 
 flash_arduino()
